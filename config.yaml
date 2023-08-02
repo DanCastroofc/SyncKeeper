@@ -1,0 +1,44 @@
+activeTasks:
+  backupFiles: true
+  backupMysql: true
+  backupPFsense: true
+
+activeMonitor:
+  zbxModule: true
+  influxModule: false
+
+backupFiles:
+  addrs:
+    - destination: "/caminho/para/destino"
+      diffActive: false
+      host: exemplo.com
+      origin: "/caminho/para/origem"
+      user: username
+      rsyncOptions: "--verbose --recursive --compress --stats"
+  nKeepDays: 180
+
+backupMysql:
+  addrs:
+    - conName: conexao1
+      dbName: database1
+      ip: 192.168.1.100
+      pwdUnsafeAuth: 'senha123'
+      pwdName: dbBackup-conexao1
+      pwdUser: userbackup
+      mysqlDumpOptions: "--column-statistics=0"
+  nKeepDays: 1
+  backupDir: "/caminho/para/backup/mysql"
+
+backupPFsense:
+  addrs:
+    destination: "/caminho/para/destino/pfsense"
+    ips:
+      - 192.168.1.1
+    user: admin
+  nKeepDays: 1
+
+log:
+  dir: "/caminho/para/diretorio/log"
+
+zabbix:
+  configFile: "/caminho/para/zabbix_agentd.conf"
